@@ -27,7 +27,7 @@ class XHProfProvider implements ProviderInterface
     {
         $data = xhprof_disable();
         $runs = new XHProfRuns_Default(config('xhprof.output_dir', null));
-        $runs->save_run($data, config('xhprof.name'), str_replace('/', ':', request()->path()) . ':' . microtime());
+        $runs->save_run($data, config('xhprof.name'), str_replace('/', ':', request()->path()) . ':' . str_replace('.', '', microtime(true)));
     }
 
 }
